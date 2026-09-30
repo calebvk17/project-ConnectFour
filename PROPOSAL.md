@@ -25,7 +25,3 @@ Each member owns one comparable feature, built end to end across the term.
 ## Tech plan
 
 - Standard library only? **Yes**
-
-- **My name is Caleb Van Kampen** ...
-
-- **My name is Caleb VK** ...
