@@ -4,10 +4,10 @@ Copy this file into your **group** repository as `PROPOSAL.md`, then fill it in 
 
 ## Team
 
-- <Alvin Joji John + GitHub username>
-- <Emmanuel Adube Oko + GitHub username>
-- <Caleb Van Kampen + calebvk17>
-- <Loaghan Vivares + GitHub username>
+- Alvin Joji John + GitHub username
+- Emmanuel Adube Oko + GitHub username
+- Caleb Van Kampen + calebvk17
+- Loaghan Vivares + GitHub username
 
 ## The application
 
@@ -17,10 +17,10 @@ Copy this file into your **group** repository as `PROPOSAL.md`, then fill it in 
 
 Each member owns one comparable feature, built end to end across the term.
 
-- <dsafasdfa>: Multiplayer networking and game rooms
-- <member 2>: AI opponent and win/draw detection
-- <Caleb Van Kampen>: Game board and player/move system
-- <member 4>: Leaderboard, save/load, and player statistics
+- member 1: Multiplayer networking and game rooms
+- member 2: AI opponent and win/draw detection
+- Caleb Van Kampen: Game board and player/move system
+- member 4: Leaderboard, save/load, and player statistics
 
 ## Tech plan
 
