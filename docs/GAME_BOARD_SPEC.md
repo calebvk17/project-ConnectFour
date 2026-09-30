@@ -33,4 +33,4 @@ This feature will manage the Connect Four board, player turns, and moves. It wil
 - `check_win()` - Checks for a win.
 - `check_draw()` - Checks for a draw.
 
-Breaking the feature into smaller functions will make it easier to build and test..
+Breaking the feature into smaller functions will make it easier to build and test.
