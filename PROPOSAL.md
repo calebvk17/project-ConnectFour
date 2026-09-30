@@ -1,28 +1,27 @@
-# Project Proposal - <team name>
+# Project Proposal - <ConnectFour>
 
 Copy this file into your **group** repository as `PROPOSAL.md`, then fill it in together.
 
 ## Team
 
-- <member 1 name + GitHub username>
-- <member 2 name + GitHub username>
-- <member 3 name + GitHub username>
-- <member 4 name + GitHub username>
-- <member 5 name + GitHub username, if any>
+- <Alvin Joji John + GitHub username>
+- <Emmanuel Adube Oko + GitHub username>
+- <Caleb Van Kampen + GitHub username>
+- <Loaghan Vivares + GitHub username>
 
 ## The application
 
-<One or two sentences: what are you building? It should fit the networked multi-user
-theme - see project/overview.md. Name a suggested project or describe your own idea.>
+<We are building a networked multiplayer Connect Four game that players can play through the terminal. It will allow multiple players to connect and play against each other, with features like an AI opponent, move history, and a leaderboard.>
 
 ## First feature breakdown (one slice per member)
 
 Each member owns one comparable feature, built end to end across the term.
 
-- <member 1>: <their feature>
-- <member 2>: <their feature>
-- <member 3>: <their feature>
+- <member 1>: Game board and player/move system
+- <member 2>: AI opponent and win/draw detection
+- <member 3>: Multiplayer networking and game rooms
+- <member 4>: Leaderboard, save/load, and player statistics
 
 ## Tech plan
 
-- Standard library only? **yes** / list any extra library you want to use and why.
+- Standard library only? **yes**
