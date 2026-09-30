@@ -19,7 +19,7 @@ Each member owns one comparable feature, built end to end across the term.
 
 - member 1: Multiplayer networking and game rooms
 - member 2: AI opponent and win/draw detection
-- Caleb Van Kampen: Game board and player/move system
+- Caleb Van Kampen: Game board and player/move syssdsdsdsdtem
 - member 4: Leaderboard, save/load, and player statistics
 
 ## Tech plan
