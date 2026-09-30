@@ -24,4 +24,4 @@ Each member owns one comparable feature, built end to end across the term.
 
 ## Tech plan
 
-- Standard library only? **yes**
+- Standard library only? **Yes**
