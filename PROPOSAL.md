@@ -1,4 +1,4 @@
-# Project Proposal - ConnectFour
+# Project Proposal - Connect Four
 
 Copy this file into your **group** repository as `PROPOSAL.md`, then fill it in together.
 
