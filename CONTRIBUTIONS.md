@@ -21,7 +21,7 @@ in - the rest of this file is one row per member, per milestone, against their s
 
 | Student | Slice (the feature they own) |
 |---------|------------------------------|
-| <name.  | <feature>                    |
+| <name>  | <feature>                    |
 | <name>  | <feature>                    |
 | Caleb Van Kampen  | Game board and player/move system                    |
 | <name>  | <feature>                    |
