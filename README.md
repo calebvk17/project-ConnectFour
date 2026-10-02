@@ -10,7 +10,7 @@ networked, multi-user theme - see the "Suggested projects" section of
 
 | Full name | GitHub username |
 |-----------|-----------------|
-| <name>    | @<username>     |
+| Caleb Van Kampen    | @calebvk17     |
 | <name>    | @<username>     |
 | <name>    | @<username>     |
 | <name>    | @<username>     |
