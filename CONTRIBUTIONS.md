@@ -21,10 +21,9 @@ in - the rest of this file is one row per member, per milestone, against their s
 
 | Student | Slice (the feature they own) |
 |---------|------------------------------|
-| Caleb Van Kampen  | <feature>                    |
+| <name.  | <feature>                    |
 | <name>  | <feature>                    |
-| <name>  | <feature>                    |
-| <name>  | <feature>                    |
+| Caleb Van Kampen  | Game board and player/move system                    |
 | <name>  | <feature>                    |
 
 <!-- Teams of four: delete the fifth row, here and in the tables below. -->
@@ -59,8 +58,7 @@ Worked example:
 |---------|----------|--------------|-------------|-----------|
 | <name>  |          |              |             |           |
 | <name>  |          |              |             |           |
-| <name>  |          |              |             |           |
-| <name>  |          |              |             |           |
+| Caleb Van Kampen  |          |              |             |           |
 | <name>  |          |              |             |           |
 
 <!-- Optional but recommended: a line per member saying which function or file to look at. -->
