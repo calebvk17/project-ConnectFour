@@ -10,7 +10,7 @@ Copy this file into your **group** repository as `PROPOSAL.md`, then fill it in 
 
 ## The application
 
-We are building a networked multiplayer Connect Four game that players can play through the terminal. It will allow multiple players to connect and play against each other, with features like an AI opponent, move history, and a leaderboard.
+We are building a networked multiplayer Connect Four game that players can play through the terminal. It will allow players to take turns on a game board, with features like save/load, an AI opponent, win/draw detection, move history, and a leaderboard.
 
 ## First feature breakdown (one slice per member)
 
