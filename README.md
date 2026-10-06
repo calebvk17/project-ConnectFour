@@ -1,20 +1,16 @@
-# <your project name>
+# Connect Four
 
 ## The application
 
-<Two or three sentences: what are you building, and who plays or uses it? It has to fit the
-networked, multi-user theme - see the "Suggested projects" section of
-[`MILESTONES.md`](MILESTONES.md). Name one of the suggestions, or describe your own idea.>
+We are building a networked multiplayer Connect Four game that players can play through the terminal. It will allow players to take turns on a game board, with features like save/load, an AI opponent, win/draw detection, move history, and a leaderboard.
 
 ## The team
 
 | Full name | GitHub username |
 |-----------|-----------------|
+| Alvin Joji John    | @Alvin1332     |
 | Caleb Van Kampen    | @calebvk17     |
-| <name>    | @<username>     |
-| <name>    | @<username>     |
-| <name>    | @<username>     |
-| <name>    | @<username>     |
+| Loaghan Vivares    | @LoaghanV     |
 
 Note:  Be sure to [add all of the group members to as collaborators on this repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository).
 
