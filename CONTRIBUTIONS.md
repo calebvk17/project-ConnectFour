@@ -56,7 +56,7 @@ Worked example:
 | Student | Planning | Control flow | Collections | Functions |
 |---------|----------|--------------|-------------|-----------|
 | Alvin Joji John  |          |              |             |           |
-| Caleb Van Kampen  | ebd0f2f         | 87fd13f             | 87fd13f            | 21d2db2          |
+| Caleb Van Kampen  | ebd0f2f         | 21d2db2             | 21d2db2            | 8f5a106          |
 | Loaghan Vivares  |          |              |             |           |
 
 <!-- Optional but recommended: a line per member saying which function or file to look at. -->
