@@ -55,41 +55,6 @@ def switch_player(current_player):
     current_player = 1 - current_player
     return current_player
 
-def check_win(rows, cols):
-
-    piece = players[current_player]
-
-    for row in range(rows):
-        for column in range(cols - 3):
-            if board[row][column] == piece and board[row][column + 1] == piece and board[row][column + 2] == piece and board [row][column + 3] == piece:
-                return True
-
-    for row in range(rows - 3):
-        for column in range(cols):
-            if board[row][column] == piece and board[row + 1][column] == piece and board[row + 2][column] == piece and board [row + 3][column] == piece:
-                return True
-
-    for row in range(rows - 3):
-        for column in range(cols - 3):
-            if board[row][column] == piece and board[row + 1][column + 1] == piece and board[row + 2][column + 2] == piece and board [row + 3][column + 3] == piece:
-                return True
-
-    for row in range(3, rows):
-        for column in range(cols - 3):
-            if board[row][column] == piece and board[row - 1][column + 1] == piece and board[row - 2][column + 2] == piece and board [row - 3][column + 3] == piece:
-                return True
-
-    return False
-
-def check_draw():
-
-    for column in range(cols):
-
-        if board[0][column] == " ":
-            return False
-    
-    return True
-
 print("\nWelcome to Connect Four!")
 
 game_over = False
@@ -102,19 +67,6 @@ while game_over == False:
 
     if is_valid_move(column):
         make_move(column, rows)
-
-        if check_win(rows, cols):
-            display_board()
-            print(f"\nPlayer {players[current_player]} wins!")
-            game_over = True
-
-        elif check_draw():
-            display_board()
-            print("\nThe game is a draw!")
-            game_over = True
-
-        else:
-            current_player = switch_player(current_player)
-
+        current_player = switch_player(current_player)
     else:
         print("\nThat column is full. Choose another column.")
