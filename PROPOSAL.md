@@ -4,23 +4,21 @@ Copy this file into your **group** repository as `PROPOSAL.md`, then fill it in 
 
 ## Team
 
-- Alvin Joji John + GitHub username
-- Emmanuel Adube Oko + GitHub username
+- Alvin Joji John + Alvin1332
 - Caleb Van Kampen + calebvk17
-- Loaghan Vivares + GitHub username
+- Loaghan Vivares + LoaghanV
 
 ## The application
 
-<We are building a networked multiplayer Connect Four game that players can play through the terminal. It will allow multiple players to connect and play against each other, with features like an AI opponent, move history, and a leaderboard.>
+We are building a networked multiplayer Connect Four game that players can play through the terminal. It will allow multiple players to connect and play against each other, with features like an AI opponent, move history, and a leaderboard.
 
 ## First feature breakdown (one slice per member)
 
 Each member owns one comparable feature, built end to end across the term.
 
-- member 1: Multiplayer networking and game rooms
-- member 2: AI opponent and win/draw detection
-- Caleb Van Kampen: Game board and player/move system
-- member 4: Leaderboard, save/load, and player statistics
+- Alvin Joji John: - AI opponent, win/draw detection, move history, and player statistics
+- Caleb Van Kampen: Game board, player/move system, and save/load
+- Loaghan Vivares: Multiplayer networking, game rooms, and leaderboard
 
 ## Tech plan
 
