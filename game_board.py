@@ -96,26 +96,3 @@ def load_game(board, saved_board, saved_player):
     current_player = saved_player
 
     return current_player
-
-print("\nWelcome to Connect Four!")
-print("Type 'save' to save your game or 'load' to load a saved game.")
-
-game_over = False
-
-while game_over == False:
-
-    display_board()
-
-    choice = get_move()
-
-    if choice == "save":
-        saved_player = save_game(board, current_player)
-        print("\nGame saved!")
-    elif choice == "load":
-        current_player = load_game(board, saved_board, saved_player)
-        print("\nGame loaded!")
-    elif is_valid_move(choice):
-        make_move(choice, rows)
-        current_player = switch_player(current_player)
-    else:
-        print("\nThat column is full. Choose another column.")
