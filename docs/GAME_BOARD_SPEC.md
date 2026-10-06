@@ -1,8 +1,8 @@
-# Game Board and Player/Move System
+# Game Board, Player/Move System, and Save/Load
 
 ## What It Does
 
-This feature will manage the Connect Four board, player turns, and moves. It will also check if the moves are valid and it will keep track of the game state.
+This feature will manage the Connect Four board, player turns, and moves. It will check whether moves are valid, it will place player pieces on the board, keep track of the game state, and it will allow the game state to be saved and loaded.
 
 ## Data Needed
 
@@ -11,26 +11,29 @@ This feature will manage the Connect Four board, player turns, and moves. It wil
 - Current player.
 - Selected column.
 - Player piece (`X` or `O`).
+- Saved game state.
 
 ## Steps
 
 1. Create an empty 6x7 board.
 2. Display the board in the terminal.
-3. Ask the player for a column.
+3. Ask the current player for a column.
 4. Check if the move is valid.
 5. Place the piece in the lowest available space.
-6. Switch to the other player.
-7. Check for a win or draw.
-8. Continue until the game ends.
+6. Update the game state.
+7. Switch to the other player.
+8. Allow the current game state to be saved.
+9. Allow a previously saved game to be loaded.
+10. Continue until the game ends.
 
 ## Functions
 
-- `display_board()` - Displays the board.
+- `display_board()` - Displays the current board.
 - `get_move()` - Gets the player's move.
 - `is_valid_move()` - Checks if a move is valid.
-- `make_move()` - Places a piece.
-- `switch_player()` - Changes turns.
-- `check_win()` - Checks for a win.
-- `check_draw()` - Checks for a draw.
+- `make_move()` - Places a piece in the lowest available space.
+- `switch_player()` - Changes the current player.
+- `save_game()` - Saves the current game state.
+- `load_game()` - Loads a previously saved game state.
 
-Breaking the feature into smaller functions will make it easier to build and test.
+Breaking the feature into smaller functions will make it easier for me to build and test.
