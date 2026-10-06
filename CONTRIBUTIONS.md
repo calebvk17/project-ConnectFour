@@ -21,10 +21,9 @@ in - the rest of this file is one row per member, per milestone, against their s
 
 | Student | Slice (the feature they own) |
 |---------|------------------------------|
-| <name>  | <feature>                    |
-| <name>  | <feature>                    |
-| Caleb Van Kampen  | Game board and player/move system                    |
-| <name>  | <feature>                    |
+| Alvin Joji John  | AI opponent, win/draw detection, move history, and player statistics                    |
+| Caleb Van Kampen  | Game board, player/move system, and save/load                    |
+| Loaghan Vivares  | Multiplayer networking, game rooms, and leaderboard                    |
 
 <!-- Teams of four: delete the fifth row, here and in the tables below. -->
 
@@ -56,10 +55,9 @@ Worked example:
 
 | Student | Planning | Control flow | Collections | Functions |
 |---------|----------|--------------|-------------|-----------|
-| <name>  |          |              |             |           |
-| <name>  |          |              |             |           |
-| Caleb Van Kampen  |          |              |             |           |
-| <name>  |          |              |             |           |
+| Alvin Joji John  |          |              |             |           |
+| Caleb Van Kampen  | ebd0f2f         | 87fd13f             | 87fd13f            | 21d2db2          |
+| Loaghan Vivares  |          |              |             |           |
 
 <!-- Optional but recommended: a line per member saying which function or file to look at. -->
 
@@ -67,18 +65,14 @@ Worked example:
 
 | Student | OOP | File I/O | Recursion | Command-line args | Interface (TUI/GUI) |
 |---------|-----|----------|-----------|-------------------|---------------------|
-| <name>  |     |          |           |                   |                     |
-| <name>  |     |          |           |                   |                     |
-| <name>  |     |          |           |                   |                     |
-| <name>  |     |          |           |                   |                     |
-| <name>  |     |          |           |                   |                     |
+| Alvin Joji John  |     |          |           |                   |                     |
+| Caleb Van Kampen  |     |          |           |                   |                     |
+| Loaghan Vivares  |     |          |           |                   |                     |
 
 ## Milestone 3 - Final Product (Units 04-05)
 
 | Student | Data structure | Algorithm strategy | Sockets | Concurrency |
 |---------|----------------|--------------------|---------|-------------|
-| <name>  |                |                    |         |             |
-| <name>  |                |                    |         |             |
-| <name>  |                |                    |         |             |
-| <name>  |                |                    |         |             |
-| <name>  |                |                    |         |             |
+| Alvin Joji John  |                |                    |         |             |
+| Caleb Van Kampen  |                |                    |         |             |
+| Loaghan Vivares  |                |                    |         |             |
