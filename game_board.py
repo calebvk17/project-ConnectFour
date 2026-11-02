@@ -22,77 +22,104 @@ players = ["X", "O"]
 current_player = 0
 saved_player = current_player
 
-def display_board():
+class Board:
 
-    print("\n  1   2   3   4   5   6   7")
-    print("+---+---+---+---+---+---+---+")
+    def __init__(self):
+        self.rows = 6
+        self.cols = 7
 
-    for row in board:
-        line = "|"
+        self.board = [[" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "]
+                ]
 
-        for cell in row:
-            line += " " + cell + " |"
 
-        print(line)
+    def display_board(self):
+
+        print("\n  1   2   3   4   5   6   7")
         print("+---+---+---+---+---+---+---+")
 
-def get_move():
+        for row in self.board:
+            line = "|"
 
-    while True:
-        choice = input(f"\nPlayer {players[current_player]}, choose a column (1-7), or type 'save' or 'load': ").lower()
+            for cell in row:
+                line += " " + cell + " |"
 
-        if choice == "save":
-            return "save"
-        elif choice == "load":
-            return "load"
-        elif choice in "1234567":
-            return int(choice) - 1
-        else:
-            print("\nInvalid column. Please choose a number from 1 to 7.")
+            print(line)
+            print("+---+---+---+---+---+---+---+")
 
-def is_valid_move(column):
+class Move:
+
+    def __init__(self):
+        self.players = ["X", "O"]
+        self.current_player = 0
+        self.rows = 6
     
-    return board[0][column] == " "
+    def get_move(self):
 
-def make_move(column, rows):
+        while True:
+            choice = input(f"\nPlayer {self.players[self.current_player]}, choose a column (1-7), or type 'save' or 'load': ").lower()
 
-    for row in range(rows - 1, -1, -1):
+            if choice == "save":
+                return "save"
+            elif choice == "load":
+                return "load"
+            elif choice in "1234567":
+                return int(choice) - 1
+            else:
+                print("\nInvalid column. Please choose a number from 1 to 7.")
 
-        if board[row][column] == " ":
-            board[row][column] = players[current_player]
+    def is_valid_move(self, board, column):
+        
+        return board.board[0][column] == " "
+
+    def make_move(self, board, column):
+
+        for row in range(self.rows - 1, -1, -1):
+
+            if board.board[row][column] == " ":
+                board.board[row][column] = self.players[self.current_player]
+                return
+
+    def switch_player(self):
+
+        self.current_player = 1 - self.current_player
+
+class SaveLoad:
+
+    def __init__(self):
+        self.saved_board = []
+        self.saved_player = 0
+    
+    def save_game(self, board, move):
+    
+        self.saved_board[:] = [
+            board.board[0][:],
+            board.board[1][:],
+            board.board[2][:],
+            board.board[3][:],
+            board.board[4][:],
+            board.board[5][:]
+        ]
+
+        self.saved_player = move.current_player
+
+    def load_game(self, board, move):
+
+        if self.saved_board == []:
+            print("\nNo saved game found.")
             return
 
-def switch_player(current_player):
+        board.board = [
+            self.saved_board[0][:],
+            self.saved_board[1][:],
+            self.saved_board[2][:],
+            self.saved_board[3][:],
+            self.saved_board[4][:],
+            self.saved_board[5][:]
+        ]
 
-    current_player = 1 - current_player
-    return current_player
-
-def save_game(board, current_player):
-    
-    saved_board[:] = [
-        board[0][:],
-        board[1][:],
-        board[2][:],
-        board[3][:],
-        board[4][:],
-        board[5][:]
-    ]
-
-    saved_player = current_player
-
-    return saved_player
-
-def load_game(board, saved_board, saved_player):
-
-    board[:] = [
-        saved_board[0][:],
-        saved_board[1][:],
-        saved_board[2][:],
-        saved_board[3][:],
-        saved_board[4][:],
-        saved_board[5][:]
-    ]
-
-    current_player = saved_player
-
-    return current_player
+        move.current_player = self.saved_player
