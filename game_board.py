@@ -62,7 +62,7 @@ class Move:
                 # Convert 1-7 into Python indexes 0-6
                 return int(choice) - 1
 
-            print("Invalid input. Enter a column from 1 to 7.")
+            print("Invalid input. Enter in a column from 1 to 7.")
 
     # Recursively looks for an empty spot in the selected column 
     def find_open_row(self, board, column, row):
