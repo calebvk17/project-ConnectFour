@@ -262,29 +262,13 @@ class GameGUI(tk.Tk):
             # Update the GUI to show the new piece
             self.refresh_board()
 
-            # Check if the board is completely full
-            if self.check_board_full():
+            # Switch to the other player's turn
+            self.move.switch_player()
 
-                self.game_over = True
+            player = self.move.players[self.move.current_player]
 
-                # Display a message when the board is full
-                self.status.config(
-                    text="The board is full! Game over!"
-                )
-
-                # Disable the column buttons because the game is over
-                for button in self.column_buttons:
-                    button.config(state="disabled")
-
-            else:
-
-                # Switch to the other player's turn
-                self.move.switch_player()
-
-                player = self.move.players[self.move.current_player]
-
-                # Updates the message at the top of the window
-                self.status.config(text=f"Player {player}'s turn")
+            # Update the message at the top of the window
+            self.status.config(text=f"Player {player}'s turn")
 
         else:
 
@@ -339,31 +323,22 @@ class GameGUI(tk.Tk):
         # Show a message to confirm the game was saved
         self.status.config(text="Game saved!")
 
-    # Loads the last saved game when the load button is clicked
+        # Loads the last saved game when the load button is clicked
     def load_game(self):
 
         # Check if a saved game was successfully loaded
         if self.saved_load.load_game(self.board, self.move):
 
-            # Check if the loaded board is already full
-            self.game_over = self.check_board_full()
-
             # Update the board to show the loaded game
             self.refresh_board()
 
-            if self.game_over == True:
+            # Get the player whose turn it is after loading
+            player = self.move.players[self.move.current_player]
 
-                self.status.config(text="The board is full! Game over!")
-
-            else:
-
-                # Get the player whose turn it is after loading
-                player = self.move.players[self.move.current_player]
-
-                # Show that the game loaded and whose turn it is
-                self.status.config(
-                    text=f"Game loaded! Player {player}'s turn."
-                )
+            # Show that the game loaded and whose turn it is
+            self.status.config(
+                text=f"Game loaded! Player {player}'s turn."
+            )
 
         else:
 
