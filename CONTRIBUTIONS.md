@@ -67,7 +67,7 @@ Worked example:
 |---------|-----|----------|-----------|-------------------|---------------------|
 | Alvin Joji John  |     |          |           |                   |                     |
 | Caleb Van Kampen |     |          |           |                   |                     |
-| Loaghan Vivares  | 864a529 | 2478459 |b2fbf1f |                   | cc0e23d  |
+| Loaghan Vivares  | 864a529 | 2478459 |b2fbf1f | c654cc9 | cc0e23d  |
 
 ## Milestone 3 - Final Product (Units 04-05)
 
