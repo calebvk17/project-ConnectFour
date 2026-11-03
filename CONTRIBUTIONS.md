@@ -68,7 +68,7 @@ Worked example:
 | Student | OOP | File I/O | Recursion | Command-line args | Interface (TUI/GUI) |
 |---------|-----|----------|-----------|-------------------|---------------------|
 | <name>  |     |          |           |                   |                     |
-| <name>  |     |          |           |                   |                     |
+| Alvin Joji John |   629c35b  |  629c35b        |      629c35b     |   629c35b                |     629c35b                |
 | <name>  |     |          |           |                   |                     |
 | <name>  |     |          |           |                   |                     |
 | <name>  |     |          |           |                   |                     |
