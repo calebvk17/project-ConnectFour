@@ -1,31 +1,32 @@
-"""Entry point for the group project.
 
-`python main.py` must run your project at every milestone, so keep this file working
-from Milestone 1 onward. Replace the placeholder below with your own core loop.
-"""
+"""Entry point for the Connect Four project."""
 
 # Import the classes needed for the game and leaderboard
 from game_board import *
 from Leaderboard import *
+from win_check import WinChecker
 import argparse
+
 
 # Displays the main menu and lets the user choose an option
 def show_menu():
     print("\n=== Connect Four ===")
-    print("1. Play a game")
+    print("1. Play a game (GUI)")
     print("2. View leaderboard")
     print("3. Quit")
+    print("4. Play a game (Terminal)")
 
     # Keep asking until the user enters a valid option
     while True:
-        choice = input("\nChoose an option (1-3): ")
+        choice = input("\nChoose an option (1-4): ")
 
         # Return the choice if it is valid
-        if choice in ["1", "2", "3"]:
+        if choice in ["1", "2", "3", "4"]:
             return choice
 
         # Tell the user if they entered something invalid
-        print("\nInvalid option. Please enter 1, 2, or 3.")
+        print("\nInvalid option. Please enter 1, 2, 3, or 4.")
+
 
 # Gets the command-line arguments when the program starts
 def get_args():
@@ -33,7 +34,7 @@ def get_args():
 
     # Lets the user choose which CSV file to save the leaderboard to
     parser.add_argument(
-        "--stats-file", 
+        "--stats-file",
         default="leaderboard.csv",
         help="CSV file where the leaderboard is saved"
     )
@@ -41,12 +42,76 @@ def get_args():
     # Return the arguments entered by the user
     return parser.parse_args()
 
+
+# Runs the terminal game using WinChecker
+def play_terminal_game():
+    # Create the board, move handler, and save/load handler
+    board = Board()
+    move = Move()
+    saveLoad = SaveLoad()
+
+    # Create the win checker using the current board
+    checker = WinChecker(board.board)
+
+    game_over = False
+
+    print("\nWelcome to Connect Four!")
+    print("Type 'save' to save or 'load' to load a game.")
+
+    while game_over == False:
+        board.display_board()
+
+        # Get the player's column choice
+        choice = move.get_move()
+
+        if choice == "save":
+            saveLoad.save_game(board, move)
+            print("\nGame saved!")
+
+        elif choice == "load":
+            if saveLoad.load_game(board, move):
+                checker.board = board.board
+                print("\nGame loaded!")
+            else:
+                print("\nNo saved game found.")
+
+        elif move.is_valid_move(board, choice):
+            # Place the current player's piece
+            move.make_move(board, choice)
+
+            player = move.players[move.current_player]
+
+            # Check for a win before checking for a draw
+            if checker.check_win(player):
+                board.display_board()
+                print(f"\nPlayer {player} wins!")
+
+                # Update the saved player statistics
+                checker.update_stats(player)
+                game_over = True
+
+            elif checker.check_draw():
+                board.display_board()
+                print("\nIt's a draw!")
+
+                # Update the saved draw statistics
+                checker.update_stats("draws")
+                game_over = True
+
+            else:
+                # Switch players if the game is not over
+                move.switch_player()
+
+        else:
+            print("\nThat column is full. Choose another column.")
+
+
 # Runs the main program
 def main():
     # Get the command-line arguments
     args = get_args()
 
-     # Create the leaderboard and load any saved player stats
+    # Create the leaderboard and load any saved player stats
     leaderboard = Leaderboard(args.stats_file)
     leaderboard.load()
 
@@ -54,7 +119,7 @@ def main():
     while True:
         choice = show_menu()
 
-        # Start a new game
+        # Option 1: Start Caleb's GUI
         if choice == "1":
             print("\nOpening Connect Four...")
 
@@ -67,15 +132,21 @@ def main():
             game = GameGUI(board, move, save_load)
             game.mainloop()
 
-        # Open the leaderboard window
+        # Option 2: Open the leaderboard window
         elif choice == "2":
             leaderboard.leaderboardGUI()
 
-        # Save the leaderboard and close the program
+        # Option 3: Save the leaderboard and quit
         elif choice == "3":
             leaderboard.save()
             print("\nLeaderboard saved. Goodbye!")
             break
 
-if __name__ == '__main__':
+        # Option 4: Play using terminal and WinChecker
+        elif choice == "4":
+            play_terminal_game()
+
+
+if __name__ == "__main__":
     main()
+
