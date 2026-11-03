@@ -66,13 +66,8 @@ Worked example:
 | Student | OOP | File I/O | Recursion | Command-line args | Interface (TUI/GUI) |
 |---------|-----|----------|-----------|-------------------|---------------------|
 | Alvin Joji John  |     |          |           |                   |                     |
-<<<<<<< HEAD
 | Caleb Van Kampen  | 3308700    | 839967f         | a05cea3          | f76e1cd                  |                     |
 | Loaghan Vivares  | 864a529    | 2478459         | b2fbf1f          | c654cc9                  | cc0e23d                    |
-=======
-| Caleb Van Kampen |     |          |           |                   |                     |
-| Loaghan Vivares  | 864a529 | 2478459 |b2fbf1f | c654cc9 | cc0e23d  |
->>>>>>> 4ba846af334b0b79864c1fd61060255346e161e8
 
 ## Milestone 3 - Final Product (Units 04-05)
 
