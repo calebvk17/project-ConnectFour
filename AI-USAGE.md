@@ -73,7 +73,7 @@ changed and how you tested it.
 |---------|-----------------|-------------|
 | Alvin Joji John  |                 |             |
 | Caleb Van Kampen  | ChatGPT                | The explanation for my game board, player/move system, and the save/load system.            |
-| Loaghan Vivares  |                 |             |
+| Loaghan Vivares  |      |       | 
 
 ### Milestone 2 - Practical Application (explanation only)
 
@@ -81,7 +81,9 @@ changed and how you tested it.
 |---------|-----------------|-------------|
 | Alvin Joji John  |                 |             |
 | Caleb Van Kampen  |                 |             |
-| Loaghan Vivares  |                 |             |
+| Loaghan Vivares  | Claude | explained main.py raising issue when calling methods from game_board|
+| Loaghan Vivares  | Claude | planning how to approach rooms task|
+| Loaghan Vivares  | Claude | test cases | 
 
 ### Milestone 3 - Final Product (AI-assisted coding allowed)
 
