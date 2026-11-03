@@ -7,14 +7,13 @@ from Leaderboard import *
 from win_check import WinChecker
 import argparse
 
-
 # Displays the main menu and lets the user choose an option
 def show_menu():
     print("\n=== Connect Four ===")
     print("1. Play a game (GUI)")
-    print("2. View leaderboard")
-    print("3. Quit")
-    print("4. Play a game (Terminal)")
+    print("2. Play a game (Terminal)")
+    print("3. View leaderboard")
+    print("4. Quit")
 
     # Keep asking until the user enters a valid option
     while True:
@@ -41,7 +40,6 @@ def get_args():
 
     # Return the arguments entered by the user
     return parser.parse_args()
-
 
 # Runs the terminal game using WinChecker
 def play_terminal_game():
@@ -105,7 +103,6 @@ def play_terminal_game():
         else:
             print("\nThat column is full. Choose another column.")
 
-
 # Runs the main program
 def main():
     # Get the command-line arguments
@@ -132,20 +129,19 @@ def main():
             game = GameGUI(board, move, save_load)
             game.mainloop()
 
-        # Option 2: Open the leaderboard window
+        # Option 2: Play using terminal and WinChecker
         elif choice == "2":
+            play_terminal_game()
+
+        # Option 3: Open the leaderboard window
+        elif choice == "3":
             leaderboard.leaderboardGUI()
 
-        # Option 3: Save the leaderboard and quit
-        elif choice == "3":
+        # Option 4: Save the leaderboard and quit
+        elif choice == "4":
             leaderboard.save()
             print("\nLeaderboard saved. Goodbye!")
             break
-
-        # Option 4: Play using terminal and WinChecker
-        elif choice == "4":
-            play_terminal_game()
-
 
 if __name__ == "__main__":
     main()
