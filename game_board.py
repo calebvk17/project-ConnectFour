@@ -1,3 +1,5 @@
+import json
+
 rows = 6
 cols = 7
 
@@ -89,37 +91,27 @@ class Move:
         self.current_player = 1 - self.current_player
 
 class SaveLoad:
-
-    def __init__(self):
-        self.saved_board = []
-        self.saved_player = 0
     
     def save_game(self, board, move):
-    
-        self.saved_board[:] = [
-            board.board[0][:],
-            board.board[1][:],
-            board.board[2][:],
-            board.board[3][:],
-            board.board[4][:],
-            board.board[5][:]
-        ]
+        saved_data = {
+            "board": board.board,
+            "current_player": move.current_player
+        }
 
-        self.saved_player = move.current_player
+        with open("savegame.json", "w") as file:
+            json.dump(saved_data, file)
 
     def load_game(self, board, move):
 
-        if self.saved_board == []:
+        try:
+            with open("savegame.json") as file:
+                saved_data = json.load(file)
+
+            board.board = saved_data["board"]
+            move.current_player = saved_data["current_player"]
+
+            return True
+
+        except FileNotFoundError:
             print("\nNo saved game found.")
-            return
-
-        board.board = [
-            self.saved_board[0][:],
-            self.saved_board[1][:],
-            self.saved_board[2][:],
-            self.saved_board[3][:],
-            self.saved_board[4][:],
-            self.saved_board[5][:]
-        ]
-
-        move.current_player = self.saved_player
+            return False
