@@ -40,7 +40,7 @@ class Move:
         self.current_player = 0
         self.rows = 6
 
-    # Recursively looks for an empty spot in the selected column    
+    # Checks is the player chooses to save, load or place a piece
     def get_move(self):
 
         # Keep asking until the player enters a valid option
@@ -50,9 +50,7 @@ class Move:
             player = self.players[self.current_player]
 
             # Ask the player to choose a column
-            choice = input(
-                f"\nPlayer {player}, choose a column (1-7), or type 'save' or 'load': "
-            ).strip().lower()
+            choice = input(f"\nPlayer {player}, choose a column (1-7), or type 'save' or 'load': ").strip().lower()
 
             # Allow the player to save or load a game
             if choice == "save" or choice == "load":
@@ -65,7 +63,8 @@ class Move:
                 return int(choice) - 1
 
             print("Invalid input. Enter a column from 1 to 7.")
-            
+
+    # Recursively looks for an empty spot in the selected column 
     def find_open_row(self, board, column, row):
 
         # Stop searching if there are no more rows left
