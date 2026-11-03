@@ -1,120 +1,107 @@
-rows = 6
-cols = 7
+import json
 
-board = [[" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "]
-    ]
+class Board:
 
-players = ["X", "O"]
-current_player = 0
+    def __init__(self):
+        self.rows = 6
+        self.cols = 7
 
-def display_board():
+        self.board = [[" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "]
+                ]
 
-    print("\n  1   2   3   4   5   6   7")
-    print("+---+---+---+---+---+---+---+")
 
-    for row in board:
-        line = "|"
+    def display_board(self):
 
-        for cell in row:
-            line += " " + cell + " |"
-
-        print(line)
+        print("\n  1   2   3   4   5   6   7")
         print("+---+---+---+---+---+---+---+")
 
-def get_move():
+        for row in self.board:
+            line = "|"
 
-    while True:
-        column = int(input(f"\nPlayer {players[current_player]}, choose a column (1-7): "))
+            for cell in row:
+                line += " " + cell + " |"
 
-        column -= 1
+            print(line)
+            print("+---+---+---+---+---+---+---+")
 
-        if 0 <= column < cols:
-            return column
+class Move:
 
-        print("\nInvalid column. Please choose a number from 1 to 7.")
-
-def is_valid_move(column):
+    def __init__(self):
+        self.players = ["X", "O"]
+        self.current_player = 0
+        self.rows = 6
     
-    return board[0][column] == " "
+    def get_move(self):
 
-def make_move(column, rows):
+        while True:
+            choice = input(f"\nPlayer {self.players[self.current_player]}, choose a column (1-7), or type 'save', 'load', or 'quit': ").strip().lower()
 
-    for row in range(rows - 1, -1, -1):
+            if choice == "save":
+                return "save"
+            elif choice == "load":
+                return "load"
+            elif choice == "quit":
+                return "quit"
+            elif choice in ["1", "2", "3", "4", "5", "6", "7"]:
+                return int(choice) - 1
+            else:
+                print("\nInvalid column. Please choose a number from 1 to 7.")
 
-        if board[row][column] == " ":
-            board[row][column] = players[current_player]
+    def is_valid_move(self, board, column):
+        
+        return board.board[0][column] == " "
+
+    def find_open_row(self, board, column, row):
+
+        if row < 0:
             return
 
-def switch_player(current_player):
+        if board.board[row][column] == " ":
+            return row
 
-    current_player = 1 - current_player
-    return current_player
+        return self.find_open_row(board, column, row - 1)
 
-def check_win(rows, cols):
+    def make_move(self, board, column):
 
-    piece = players[current_player]
+        row = self.find_open_row(board, column, self.rows - 1)
 
-    for row in range(rows):
-        for column in range(cols - 3):
-            if board[row][column] == piece and board[row][column + 1] == piece and board[row][column + 2] == piece and board [row][column + 3] == piece:
-                return True
+        if row != None:
+            board.board[row][column] = self.players[self.current_player]
 
-    for row in range(rows - 3):
-        for column in range(cols):
-            if board[row][column] == piece and board[row + 1][column] == piece and board[row + 2][column] == piece and board [row + 3][column] == piece:
-                return True
+        return row
 
-    for row in range(rows - 3):
-        for column in range(cols - 3):
-            if board[row][column] == piece and board[row + 1][column + 1] == piece and board[row + 2][column + 2] == piece and board [row + 3][column + 3] == piece:
-                return True
+    def switch_player(self):
 
-    for row in range(3, rows):
-        for column in range(cols - 3):
-            if board[row][column] == piece and board[row - 1][column + 1] == piece and board[row - 2][column + 2] == piece and board [row - 3][column + 3] == piece:
-                return True
+        self.current_player = 1 - self.current_player
 
-    return False
-
-def check_draw():
-
-    for column in range(cols):
-
-        if board[0][column] == " ":
-            return False
+class SaveLoad:
     
-    return True
+    def save_game(self, board, move):
 
-print("\nWelcome to Connect Four!")
+        saved_data = {
+            "board": board.board,
+            "current_player": move.current_player
+        }
 
-game_over = False
+        with open("savegame.json", "w") as file:
+            json.dump(saved_data, file)
 
-while game_over == False:
+    def load_game(self, board, move):
 
-    display_board()
+        try:
+            with open("savegame.json") as file:
+                saved_data = json.load(file)
 
-    column = get_move()
+            board.board = saved_data["board"]
+            move.current_player = saved_data["current_player"]
 
-    if is_valid_move(column):
-        make_move(column, rows)
+            return True
 
-        if check_win(rows, cols):
-            display_board()
-            print(f"\nPlayer {players[current_player]} wins!")
-            game_over = True
-
-        elif check_draw():
-            display_board()
-            print("\nThe game is a draw!")
-            game_over = True
-
-        else:
-            current_player = switch_player(current_player)
-
-    else:
-        print("\nThat column is full. Choose another column.")
+        except FileNotFoundError:
+            print("\nNo saved game found.")
+            return False

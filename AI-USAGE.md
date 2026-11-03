@@ -71,28 +71,22 @@ changed and how you tested it.
 
 | Student | AI tool(s) used | Used it for |
 |---------|-----------------|-------------|
-| <name>  |                 |             |
-| <name>  |                 |             |
-| <name>  |                 |             |
-| <name>  |                 |             |
-| <name>  |                 |             |
+| Alvin Joji John  |                 |             |
+| Caleb Van Kampen  | ChatGPT                | The explanation for my game board, player/move system, and the save/load system.            |
+| Loaghan Vivares  |                 |             |
 
 ### Milestone 2 - Practical Application (explanation only)
 
 | Student | AI tool(s) used | Used it for |
 |---------|-----------------|-------------|
-| <name>  |                 |             |
-| <name>  |                 |             |
-| <name>  |                 |             |
-| <name>  |                 |             |
-| <name>  |                 |             |
+| Alvin Joji John  |                 |             |
+| Caleb Van Kampen  |                 |             |
+| Loaghan Vivares  |                 |             |
 
 ### Milestone 3 - Final Product (AI-assisted coding allowed)
 
 | Student | AI tool(s) used | Used it for | Generated code? Where, and how you verified it |
 |---------|-----------------|-------------|-----------------------------------------------|
-| <name>  |                 |             |                                               |
-| <name>  |                 |             |                                               |
-| <name>  |                 |             |                                               |
-| <name>  |                 |             |                                               |
-| <name>  |                 |             |                                               |
+| Alvin Joji John  |                 |             |                                               |
+| Caleb Van Kampen  |                 |             |                                               |
+| Loaghan Vivares  |                 |             |                                               |
