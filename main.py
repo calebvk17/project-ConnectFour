@@ -24,65 +24,44 @@ def show_menu():
 
 def get_args():
     parser = argparse.ArgumentParser(description="Connect Four")
-    parser.add_argument("--stats-file", default="leaderboard.csv",
-    help="CSV file where the leaderboard is saved")
+    
+    parser.add_argument(
+        "--stats-file", 
+        default="leaderboard.csv",
+        help="CSV file where the leaderboard is saved"
+    )
+
     return parser.parse_args()
 
 def main():
     args = get_args()
+
     leaderboard = Leaderboard(args.stats_file)
     leaderboard.load()
-
-    choice = show_menu()
  
-    while choice == "2":
-        leaderboard.leaderboardGUI()
+    while True:
         choice = show_menu()
- 
-    if choice == "3":
-        leaderboard.save()
-        print("\nLeaderboard saved. Goodbye!")
-        return
- 
-    # Added menu to view leaderboard before starting the game - Loaghan
- 
-    print("\nWelcome to Connect Four!")
-    print("\nType 'save' to save your game or 'load' to load a saved game.")
 
-    board = Board()
-    move = Move()
-    saveLoad = SaveLoad()
+        # Option 1: Start the Connect Four GUI
+        if choice == "1":
+            print("\nOpening Connect Four...")
 
-    game_over = False
+            board = Board()
+            move = Move()
+            save_load = SaveLoad()
 
-    while game_over == False:
+            game = GameGUI(board, move, save_load)
+            game.mainloop()
 
-        board.display_board()
+        # Option 2: Display leaderboard
+        elif choice == "2":
+            leaderboard.leaderboardGUI()
 
-        choice = move.get_move()
-
-        if choice == "save":
-            saveLoad.save_game(board, move)
-            print("\nGame saved!")
-
-        elif choice == "load":
-            if saveLoad.load_game(board, move):
-                print("\nGame loaded!")
-
-        elif move.is_valid_move(board, choice):
-            move.make_move(board, choice)
-            move.switch_player()
-            #symbol = move.players[move.current_player]
-
-            # TODO (Alvin): win/draw detection goes here. After each move, check
-            # whether the current player won or the board is full, then set
-            # game_over = True and print the result.
-            # Also break the loop when game over
-
-        else:
-            print("\nThat column is full. Choose another column.")
-
-    leaderboard.save()
+        # Option 3: Quit the program
+        elif choice == "3":
+            leaderboard.save()
+            print("\nLeaderboard saved. Goodbye!")
+            break
 
 if __name__ == '__main__':
     main()
