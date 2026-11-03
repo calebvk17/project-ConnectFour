@@ -1,29 +1,5 @@
 import json
 
-rows = 6
-cols = 7
-
-board = [[" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " "]
-    ]
-
-saved_board = [
-        board[0][:],
-        board[1][:],
-        board[2][:],
-        board[3][:],
-        board[4][:],
-        board[5][:]
-    ]
-
-players = ["X", "O"]
-current_player = 0
-saved_player = current_player
-
 class Board:
 
     def __init__(self):
