@@ -21,9 +21,9 @@ in - the rest of this file is one row per member, per milestone, against their s
 
 | Student | Slice (the feature they own) |
 |---------|------------------------------|
-| Alvin Joji John  | AI opponent, win/draw detection, move history, and player statistics                    |
-| Caleb Van Kampen  | Game board, player/move system, and save/load                    |
-| Loaghan Vivares  | Multiplayer networking, game rooms, and leaderboard                    |
+| Alvin Joji John | AI opponent, win/draw detection, move history, and player statistics |
+| Caleb Van Kampen | Game board, player/move system, and save/load |
+| Loaghan Vivares | Multiplayer networking, game rooms, and leaderboard |
 
 <!-- Teams of four: delete the fifth row, here and in the tables below. -->
 
@@ -55,19 +55,25 @@ Worked example:
 
 | Student | Planning | Control flow | Collections | Functions |
 |---------|----------|--------------|-------------|-----------|
-| Alvin Joji John  |          |              |             |           |
-| Caleb Van Kampen  | ebd0f2f         | 21d2db2             | 21d2db2            | 8f5a106          |
-| Loaghan Vivares  |          |              |             |           |
-
+| Alvin Joji John | e895b92 | eea85f5 | eea85f5 | eea85f5 |
+| Caleb Van Kampen | ebd0f2f | 21d2db2 | 21d2db2 | 8f5a106 |
+| Loaghan Vivares | | | | |
 <!-- Optional but recommended: a line per member saying which function or file to look at. -->
 
 ## Milestone 2 - Practical Application (Unit 03)
 
 | Student | OOP | File I/O | Recursion | Command-line args | Interface (TUI/GUI) |
 |---------|-----|----------|-----------|-------------------|---------------------|
+<<<<<<< HEAD
+| Alvin Joji John | 629c35b | 629c35b | 629c35b | 629c35b | 629c35b |
+| Caleb Van Kampen | 3308700 | 839967f | a05cea3 | f76e1cd | |
+| Loaghan Vivares | | | | | |
+
+=======
 | Alvin Joji John  |     |          |           |                   |                     |
 | Caleb Van Kampen  | 3308700    | 839967f         | a05cea3          | f76e1cd                  |                     |
 | Loaghan Vivares  | 864a529    | 2478459         | b2fbf1f          | c654cc9                  | cc0e23d                    |
+>>>>>>> origin/main
 
 ## Milestone 3 - Final Product (Units 04-05)
 
