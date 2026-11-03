@@ -84,6 +84,8 @@ changed and how you tested it.
 | Loaghan Vivares  | Claude | explained main.py raising issue when calling methods from game_board|
 | Loaghan Vivares  | Claude | planning how to approach rooms task|
 | Loaghan Vivares  | Claude | test cases | 
+| Loaghan Vivares  | Claude | features in the README explanations| 
+
 
 ### Milestone 3 - Final Product (AI-assisted coding allowed)
 
