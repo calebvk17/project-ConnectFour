@@ -253,70 +253,77 @@ class GameGUI(tk.Tk):
 
             else:
 
+                # Switch to the other player's turn
                 self.move.switch_player()
 
                 player = self.move.players[self.move.current_player]
 
+                # Updates the message at the top of the window
                 self.status.config(text=f"Player {player}'s turn")
 
         else:
 
+            # Let the player know that the selected column is full
             self.status.config(
                 text=f"Column {column + 1} is full! Choose another column."
             )
 
-    def check_board_full(self):
-
-        for col in range(self.board.cols):
-
-            if self.board.board[0][col] == " ":
-                return False
-
-        return True
-
+     # Updates the GUI to match what is currently on the game board
     def refresh_board(self):
 
         for row in range(self.board.rows):
 
             for col in range(self.board.cols):
 
+                # Get the value stored in the current board cell
                 value = self.board.board[row][col]
 
+                # Give player X's pieces the colour red
                 if value == "X":
                     text_color = "red"
 
+                # Give player O's pieces the colour blue
                 elif value == "O":
                     text_color = "blue"
 
                 else:
                     text_color = "black"
 
+                # Update the cell with the correct piece and colour
                 self.cell_labels[row][col].config(
                     text=value,
                     fg=text_color
                 )
 
+        # Enable the column buttons again
         for button in self.column_buttons:
 
             button.config(state="normal")
 
+        # Keep the buttons disabled if the game is over
         if self.game_over == True:
 
             for button in self.column_buttons:
                 button.config(state="disabled")
 
+    # Saves the current game when the save button is clicked
     def save_game(self):
 
         self.saved_load.save_game(self.board, self.move)
 
+        # Show a message to confirm the game was saved
         self.status.config(text="Game saved!")
 
+    # Loads the last saved game when the load button is clicked
     def load_game(self):
 
+        # Check if a saved game was successfully loaded
         if self.saved_load.load_game(self.board, self.move):
 
+            # Check if the loaded board is already full
             self.game_over = self.check_board_full()
 
+            # Update the board to show the loaded game
             self.refresh_board()
 
             if self.game_over == True:
@@ -325,22 +332,28 @@ class GameGUI(tk.Tk):
 
             else:
 
+                # Get the player whose turn it is after loading
                 player = self.move.players[self.move.current_player]
 
+                # Show that the game loaded and whose turn it is
                 self.status.config(
                     text=f"Game loaded! Player {player}'s turn."
                 )
 
         else:
 
+            # Show a message if there is no saved game to load
             self.status.config(text="No saved game found.")
 
+    # Resets everything to start a fresh game
     def new_game(self):
 
         self.board.reset()
         self.move.current_player = 0
         self.game_over = False
 
+        # Refresh the board so all the pieces disappear
         self.refresh_board()
 
+        # Set the turn back to player X
         self.status.config(text="New game! Player X's turn.")
