@@ -22,7 +22,7 @@ in - the rest of this file is one row per member, per milestone, against their s
 | Student | Slice (the feature they own) |
 |---------|------------------------------|
 | <name>  | <feature>                    |
-| <name>  | <feature>                    |
+| Alvin Joji John  | Win and Draw detection                    |
 | Caleb Van Kampen  | Game board and player/move system                    |
 | <name>  | <feature>                    |
 
@@ -57,7 +57,7 @@ Worked example:
 | Student | Planning | Control flow | Collections | Functions |
 |---------|----------|--------------|-------------|-----------|
 | <name>  |          |              |             |           |
-| <name>  |          |              |             |           |
+| Alvin Joji John  |   e895b92       |   eea85f5           | eea85f5            |   eea85f5        |
 | Caleb Van Kampen  |          |              |             |           |
 | <name>  |          |              |             |           |
 
