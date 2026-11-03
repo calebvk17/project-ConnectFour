@@ -1,5 +1,31 @@
+<<<<<<< HEAD
 import json
 import tkinter as tk
+=======
+rows = 6
+cols = 7
+
+board = [[" ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " "]
+    ]
+
+saved_board = [
+        board[0][:],
+        board[1][:],
+        board[2][:],
+        board[3][:],
+        board[4][:],
+        board[5][:]
+    ]
+
+players = ["X", "O"]
+current_player = 0
+saved_player = current_player
+>>>>>>> 4ba846af334b0b79864c1fd61060255346e161e8
 
 class Board:
 
@@ -44,28 +70,37 @@ class Board:
 class Move:
 
     def __init__(self):
-        self.players = ["X", "O"]
+        self.players = ["X", "O"] # Need a way to switch turns
         self.current_player = 0
         self.rows = 6
+<<<<<<< HEAD
+=======
+    
+    def get_move(self):
+        while True:
+            choice = input(f"\nPlayer {self.players[self.current_player]}, choose a column (1-7), or type 'save' or 'load': ").lower()
 
-    def find_open_row(self, board, column, row):
+            if choice == "save":
+                return "save"
+            elif choice == "load":
+                return "load"
+            elif choice in "1234567":  # Bug here, entering " " causes error - Loaghan
+                return int(choice) - 1
+            else:
+                print("\nInvalid column. Please choose a number from 1 to 7.")
 
-        if row < 0:
-            return
-
-        if board.board[row][column] == " ":
-            return row
-
-        return self.find_open_row(board, column, row - 1)
+    def is_valid_move(self, board, column):
+        
+        return board.board[0][column] == " "
+>>>>>>> 4ba846af334b0b79864c1fd61060255346e161e8
 
     def make_move(self, board, column):
 
-        row = self.find_open_row(board, column, self.rows - 1)
+        for row in range(self.rows - 1, -1, -1):
 
-        if row != None:
-            board.board[row][column] = self.players[self.current_player]
-
-        return row
+            if board.board[row][column] == " ":
+                board.board[row][column] = self.players[self.current_player]
+                return
 
     def is_valid_move(self, board, column):
         
@@ -76,30 +111,29 @@ class Move:
         self.current_player = 1 - self.current_player
 
 class SaveLoad:
+
+    def __init__(self):
+        self.saved_board = []
+        self.saved_player = 0
     
     def save_game(self, board, move):
+    
+        self.saved_board[:] = [
+            board.board[0][:],
+            board.board[1][:],
+            board.board[2][:],
+            board.board[3][:],
+            board.board[4][:],
+            board.board[5][:]
+        ]
 
-        saved_data = {
-            "board": board.board,
-            "current_player": move.current_player
-        }
-
-        with open("savegame.json", "w") as file:
-            json.dump(saved_data, file)
+        self.saved_player = move.current_player
 
     def load_game(self, board, move):
 
-        try:
-            with open("savegame.json") as file:
-                saved_data = json.load(file)
-
-            board.board = saved_data["board"]
-            move.current_player = saved_data["current_player"]
-
-            return True
-
-        except FileNotFoundError:
+        if self.saved_board == []:
             print("\nNo saved game found.")
+<<<<<<< HEAD
             return False
 
 
@@ -314,3 +348,17 @@ class GameGUI(tk.Tk):
         self.refresh_board()
 
         self.status.config(text="New game! Player X's turn.")
+=======
+            return
+
+        board.board = [
+            self.saved_board[0][:],
+            self.saved_board[1][:],
+            self.saved_board[2][:],
+            self.saved_board[3][:],
+            self.saved_board[4][:],
+            self.saved_board[5][:]
+        ]
+
+        move.current_player = self.saved_player
+>>>>>>> 4ba846af334b0b79864c1fd61060255346e161e8
