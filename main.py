@@ -20,7 +20,7 @@ def show_menu():
         if choice in ["1", "2", "3"]:
             return choice
  
-        print("Invalid option. Please enter 1, 2, or 3.")
+        print("\nInvalid option. Please enter 1, 2, or 3.")
 
 def get_args():
     parser = argparse.ArgumentParser(description="Connect Four")
@@ -42,7 +42,6 @@ def main():
     while True:
         choice = show_menu()
 
-        # Option 1: Start the Connect Four GUI
         if choice == "1":
             print("\nOpening Connect Four...")
 
@@ -53,11 +52,9 @@ def main():
             game = GameGUI(board, move, save_load)
             game.mainloop()
 
-        # Option 2: Display leaderboard
         elif choice == "2":
             leaderboard.leaderboardGUI()
-
-        # Option 3: Quit the program
+            
         elif choice == "3":
             leaderboard.save()
             print("\nLeaderboard saved. Goodbye!")
