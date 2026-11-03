@@ -33,6 +33,7 @@ def get_args():
 
     return parser.parse_args()
 
+<<<<<<< Updated upstream
 def main():
     args = get_args()
 
@@ -62,6 +63,20 @@ def main():
             leaderboard.save()
             print("\nLeaderboard saved. Goodbye!")
             break
+=======
+    board = game_board.Board()
+    move = game_board.Move()
+    saved_load = game_board.SaveLoad()
 
+    game = game_board.GameGUI(
+        board,
+        move,
+        saved_load,
+        args.load
+    )
+>>>>>>> Stashed changes
+
+    game.mainloop()
+    
 if __name__ == '__main__':
     main()
