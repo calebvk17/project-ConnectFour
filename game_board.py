@@ -40,10 +40,7 @@ class Move:
         self.current_player = 0
         self.rows = 6
 
-<<<<<<< HEAD
-    # Recursively looks for an empty spot in the selected column
-=======
-        
+    # Recursively looks for an empty spot in the selected column    
     def get_move(self):
 
         # Keep asking until the player enters a valid option
@@ -68,9 +65,7 @@ class Move:
                 return int(choice) - 1
 
             print("Invalid input. Enter a column from 1 to 7.")
-
-
->>>>>>> f6b7c4110b824a0526bfd2b68e255fdcc204477b
+            
     def find_open_row(self, board, column, row):
 
         # Stop searching if there are no more rows left
