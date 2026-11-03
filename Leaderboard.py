@@ -70,4 +70,34 @@ class Leaderboard:
         except FileNotFoundError:
             pass
 
+    def leaderboardGUI(self):
+        '''Uses tkinter to make a GUI for the leaderboard.'''
+        window = tk.Tk()
+        window.title("Leaderboard")
+        window.geometry("400x300")
 
+        title = tk.Label(window, text="Leaderboard", font=("Arial", 16))
+        title.pack(pady=10)
+
+        sorted_stats = self.get_sorted()
+
+        if len(sorted_stats) == 0:
+            no_stats_label = tk.Label(window, text="No stats available.", font=("Arial", 12))
+            no_stats_label.pack(pady=10)
+
+        for rank, stat in enumerate(sorted_stats, 1):
+            text = f"{rank}. {stat[0]} - {stat[1]}W {stat[2]}L {stat[3]}D"
+            tk.Label(window, text=text).pack()
+
+        tk.Button(window, text="Close", command=window.destroy).pack(pady=10)
+        window.mainloop()
+
+
+#testing
+'''
+lb = Leaderboard("test.csv")
+lb.record_result("Alice", "Bob")
+lb.record_result("Alice", "Carl")
+lb.record_result("Carl", "Bob")
+lb.leaderboardGUI()
+'''
