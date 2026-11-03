@@ -1,5 +1,22 @@
 import csv
 import tkinter as tk
+
+def stats_sort(stats: list):
+    """Sort the list of stats by wins, using recursion."""
+
+    if len(stats) == 0:
+        return []
+
+    winner: str = stats[0]
+
+    for stat in stats:
+        if stat[1] > winner[1]:
+            winner = stat
+
+    stats_temp: list = stats.copy()
+    stats_temp.remove(winner)
+
+    return [winner] + stats_sort(stats_temp)
     
 class Leaderboard:
     def __init__(self, filename):
@@ -29,13 +46,18 @@ class Leaderboard:
     def get_sorted(self):
         """Turn self.stats into a list and return it sorted by wins,
         using your recursive sort."""
+        player_stats_list: list = []
+        for player, stats in self.stats.items():
+            player_stats_list.append((player, stats["wins"], stats["losses"], stats["draws"]))
+        return stats_sort(player_stats_list)
 
     def save(self):
         """Write every player to self.filename as CSV."""
+        
 
     def load(self):
         """Read self.filename into self.stats. If the file doesn't exist
         yet, start with an empty dict (don't crash)."""
+        
 
-    def leaderboardGUI(self):
-        '''Uses tkinter to make a GUI for the leaderboard.'''
+
