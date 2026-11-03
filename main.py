@@ -71,7 +71,8 @@ def main():
 
         elif move.is_valid_move(board, choice):
             move.make_move(board, choice)
-            symbol = move.players[move.current_player]
+            move.switch_player()
+            #symbol = move.players[move.current_player]
 
             # TODO (Alvin): win/draw detection goes here. After each move, check
             # whether the current player won or the board is full, then set
