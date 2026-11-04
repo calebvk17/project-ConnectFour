@@ -40,7 +40,7 @@ class Move:
         self.current_player = 0
         self.rows = 6
 
-    # Checks is the player chooses to save, load or place a piece
+    # Check if the player chooses to save, load or place a piece
     def get_move(self):
 
         # Keep asking until the player enters a valid option
@@ -103,7 +103,7 @@ class Move:
 # Handles saving and loading the game using a .json file
 class SaveLoad:
 
-    # Saves the current board and player turn to a file
+    # Saves the current board and player turn to a .json file
     def save_game(self, board, move):
 
         # Stores the board and current player in a dictionary
@@ -123,6 +123,7 @@ class SaveLoad:
             # Open the file and read the saved game data
             with open("savegame.json") as file:
                 saved_data = json.load(file)
+
             # Restore the board and whose turn it is
             board.board = saved_data["board"]
             move.current_player = saved_data["current_player"]
@@ -259,12 +260,11 @@ class GameGUI(tk.Tk):
             # Place the current player's piece on the board
             self.move.make_move(self.board, column)
 
-            # Update the GUI to show the new piece
+            # Update the GUI so that it shows the new piece
             self.refresh_board()
 
             # Switch to the other player's turn
             self.move.switch_player()
-
             player = self.move.players[self.move.current_player]
 
             # Update the message at the top of the window
@@ -277,7 +277,7 @@ class GameGUI(tk.Tk):
                 text=f"Column {column + 1} is full! Choose another column."
             )
 
-     # Updates the GUI to match what is currently on the game board
+    # Updates the GUI to match what is currently on the game board
     def refresh_board(self):
 
         for row in range(self.board.rows):
@@ -290,11 +290,9 @@ class GameGUI(tk.Tk):
                 # Give player X's pieces the colour red
                 if value == "X":
                     text_color = "red"
-
                 # Give player O's pieces the colour blue
                 elif value == "O":
                     text_color = "blue"
-
                 else:
                     text_color = "black"
 
@@ -320,7 +318,7 @@ class GameGUI(tk.Tk):
 
         self.saved_load.save_game(self.board, self.move)
 
-        # Show a message to confirm the game was saved
+        # Show a message to confirm that the game was saved
         self.status.config(text="Game saved!")
 
     # Loads the last saved game when the load button is clicked
@@ -335,17 +333,15 @@ class GameGUI(tk.Tk):
             # Get the player whose turn it is after loading
             player = self.move.players[self.move.current_player]
 
-            # Show that the game loaded and whose turn it is
+            # Show that the game was loaded and whose turn it is
             self.status.config(
                 text=f"Game loaded! Player {player}'s turn."
             )
-
         else:
-
             # Show a message if there is no saved game to load
             self.status.config(text="No saved game found.")
 
-    # Resets everything to start a fresh game
+    # Resets everything to start a fresh new game
     def new_game(self):
 
         self.board.reset()
