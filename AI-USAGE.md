@@ -80,7 +80,7 @@ changed and how you tested it.
 | Student | AI tool(s) used | Used it for |
 |---------|-----------------|-------------|
 | Alvin Joji John  |                 |             |
-| Caleb Van Kampen  | ChatGPT                | Explained how argparse works, how command-line arguments are used, and how saved games are loaded into the GUI and terminal.            |
+| Caleb Van Kampen  | ChatGPT                | Explained how argparse works, how command-line arguments are used, and how saved games are loaded into the GUI and the terminal.            |
 | Loaghan Vivares  | Claude | explained main.py raising issue when calling methods from game_board|
 | Loaghan Vivares  | Claude | planning how to approach rooms task|
 | Loaghan Vivares  | Claude | test cases | 
