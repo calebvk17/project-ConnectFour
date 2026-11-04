@@ -2,11 +2,12 @@
 
 ## The Application
 
-We are building a networked multiplayer Connect Four game that players can play through the terminal. It allows players to take turns on a game board and includes features such as save/load, an AI opponent, win/draw detection, move history, and a leaderboard.
+We are building a networked multiplayer Connect Four game that players can play through the GUI and the terminal. It allows players to take turns on a game board and includes features such as save/load, an AI opponent, win/draw detection, move history, and a leaderboard.
 
 ## Features (Current)
 
 - Connect Four board displayed in the terminal, with pieces dropped into columns 1–7.
+- Switching turns between players.
 - Save and load a game in progress (kept in memory, so it lasts for the current session only).
 - Leaderboard that stores wins, losses, and draws per player, ranked by wins.
 - Leaderboard saved to and loaded from a CSV file, so it survives a restart.
@@ -16,7 +17,6 @@ We are building a networked multiplayer Connect Four game that players can play 
 
 ## Planned Features
 
-- Switching turns between players.
 - Win and draw detection.
 - Automatically recording game results on the leaderboard.
 - AI opponent.
@@ -27,9 +27,10 @@ We are building a networked multiplayer Connect Four game that players can play 
 
 1. Run the application using `python main.py`.
 2. At the startup menu, enter:
-   - `1` to play a game.
-   - `2` to view the leaderboard.
-   - `3` to quit (this saves the leaderboard).
+   - `1` to play a game in the GUI.
+   - `2` to play a game in the terminal.
+   - `3` to view the leaderboard.
+   - `4` to quit (this saves the leaderboard).
 3. During a game, enter a column number from 1 to 7 to drop a piece.
 4. Type `save` to save the current game.
 5. Type `load` to restore the last saved game.
