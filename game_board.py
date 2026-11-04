@@ -145,6 +145,7 @@ class GameGUI(tk.Tk):
         self.move = move
         self.saved_load = saved_load
         self.game_over = False
+        self.resizable(False, False)
 
         # Set the title of the game window
         self.title("Connect Four")
@@ -322,7 +323,7 @@ class GameGUI(tk.Tk):
         # Show a message to confirm the game was saved
         self.status.config(text="Game saved!")
 
-        # Loads the last saved game when the load button is clicked
+    # Loads the last saved game when the load button is clicked
     def load_game(self):
 
         # Check if a saved game was successfully loaded
