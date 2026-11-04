@@ -75,5 +75,3 @@ Worked example:
 | Alvin Joji John  |                |                    |         |             |
 | Caleb Van Kampen |                |                    |         |             |
 | Loaghan Vivares  |                |                    |         |             |
-
-sdsdsd
