@@ -73,5 +73,5 @@ Worked example:
 | Student | Data structure | Algorithm strategy | Sockets | Concurrency |
 |---------|----------------|--------------------|---------|-------------|
 | Alvin Joji John  |                |                    |         |             |
-| Caleb Van Kampen |                |                    |         |             |
+| Caleb Van Kampen | 55486a1               |                    |         |             |
 | Loaghan Vivares  |                |                    |         |             |
