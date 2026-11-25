@@ -124,6 +124,176 @@ class Move:
 
         return False
 
+    # Checks if placing a place in a column would create four in a row
+    def would_win(self, board, column, symbol):
+
+        row = self.find_open_row(board, column, self.rows - 1)
+
+        if row == None:
+            return False
+
+        # Temporarily place the piece
+        board.board[row][column] = symbol
+
+        directions = [(0, 1), (1, 0), (1, 1), (1, -1)]
+
+        won = False
+
+        for dr, dc in directions:
+
+            count = 1
+
+            # Check both directions from the placed piece
+            for direction in [1, -1]:
+
+                r = row + dr * direction
+                c = column + dc * direction
+
+                while (0 <= r < board.rows and 0 <= c < board.cols and board.board[r][c] == symbol):
+
+                    count += 1
+
+                    r += dr * direction
+                    c += dc * direction
+
+            if count >= 4:
+                won = True
+
+        # Remove the temporary piece
+        board.board[row][column] = " "
+
+        return won
+
+    # Gives a score to a possible board position
+    def evaluate_board(self, board, symbol):
+
+        opponent = self.players[1 - self.current_player]
+
+        score = 0
+
+        # Give the centre column extra points
+        for row in range(board.rows):
+
+            if board.board[row][3] == symbol:
+                score += 3
+
+        # Check every possible group of four spaces
+        directions = [(0, 1), (1, 0), (1, 1), (1, -1)]
+
+        for row in range(board.rows):
+            for col in range(board.cols):
+                for dr, dc in directions:
+
+                    cells = []
+
+                    for i in range(4):
+
+                        r = row + dr * i
+                        c = col + dc * i
+
+                        if 0 <= r < board.rows and 0 <= c < board.cols:
+                            cells.append(board.board[r][c])
+
+                    if len(cells) == 4:
+
+                        own = 0
+                        enemy = 0
+                        empty = 0
+
+                        for cell in cells:
+
+                            if cell == symbol:
+                                own += 1
+                            elif cell == opponent:
+                                enemy += 1
+                            elif cell == " ":
+                                empty += 1
+
+                        # Reward groups that could lead to four in a row
+                        if enemy == 0:
+
+                            if own == 3 and empty == 1:
+                                score += 100
+                            elif own == 2 and empty == 2:
+                                score += 10
+                            elif own == 1 and empty == 3:
+                                score += 1
+
+                        # Check positions where the opponent has three connected pieces
+                        if own == 0 and enemy == 3 and empty == 1:
+                            score -= 80
+        return score
+    
+    # Finds the best column to recommend to the player
+    def get_hint_column(self, board):
+
+        player = self.players[self.current_player]
+        opponent = self.players[1 - self.current_player]
+
+        # Find all columns that still have space
+        available_columns = []
+
+        for col in range(board.cols):
+
+            if self.is_valid_move(board, col):
+                available_columns.append(col)
+
+        if len(available_columns) == 0:
+            return None
+
+        # First, check if the player can win immediately
+        for col in available_columns:
+
+            if self.would_win(board, col, player):
+                return col
+
+        # Check if the opponent can win on their next turn
+        opponent_wins = []
+
+        for col in available_columns:
+
+            if self.would_win(board, col, opponent):
+                opponent_wins.append(col)
+
+        # Block an immediate opponent win if possible
+        if len(opponent_wins) == 1:
+            return opponent_wins[0]
+
+        # Check every possible move and give it a score
+        best_column = None
+        best_score = -1000000
+
+        for col in available_columns:
+
+            row = self.find_open_row(board, col, self.rows - 1)
+
+            # Temporarily place the player's piece
+            board.board[row][col] = player
+
+            # Check how many winning moves the opponent would have
+            opponent_threats = 0
+
+            for next_col in range(board.cols):
+                if self.is_valid_move(board, next_col):
+                    if self.would_win(board, next_col, opponent):
+                        opponent_threats += 1
+
+            # Evaluate the resulting bvoard
+            score = self.evaluate_board(board, player)
+
+            # Discourage moves that allow the opponent to win
+            score -= opponent_threats * 1000
+
+            # Prefer the move with the highest score
+            if score > best_score:
+                best_score = score
+                best_column = col
+
+            # Remove trhe temporary piece
+            board.board[row][col] = " "
+
+        return best_column
+
 # Handles saving and loading the game using a .json file
 class SaveLoad:
 
@@ -279,6 +449,14 @@ class GameGUI(tk.Tk):
             width=12
         ).grid(row=8, column=6, padx=3, pady=15)
 
+        # Button to give the player a suggested column
+        tk.Button(
+            self,
+            text="Hint",
+            command=self.show_hint,
+            width=12
+        ).grid(row=9, column=3, padx=3, pady=5)
+
         # Make all columns equal in size
         for col in range(7):
             self.grid_columnconfigure(col, weight=1)
@@ -312,13 +490,9 @@ class GameGUI(tk.Tk):
 
             # Update the message at the top of the window
             self.status.config(text=f"Player {player}'s turn")
-
         else:
-
             # Let the player know that the selected column is full
-            self.status.config(
-                text=f"Column {column + 1} is full! Choose another column."
-            )
+            self.status.config(text=f"Column {column + 1} is full! Choose another column.")
 
     # Updates the GUI to match what is currently on the game board
     def refresh_board(self):
@@ -369,7 +543,6 @@ class GameGUI(tk.Tk):
 
         # Check if a saved game was successfully loaded
         if self.saved_load.load_game(self.board, self.move):
-
             # Update the board to show the loaded game
             self.refresh_board()
 
@@ -377,9 +550,7 @@ class GameGUI(tk.Tk):
             player = self.move.players[self.move.current_player]
 
             # Show that the game was loaded and whose turn it is
-            self.status.config(
-                text=f"Game loaded! Player {player}'s turn."
-            )
+            self.status.config(text=f"Game loaded! Player {player}'s turn.")
         else:
             # Show a message if there is no saved game to load
             self.status.config(text="No saved game found.")
@@ -402,13 +573,21 @@ class GameGUI(tk.Tk):
     def undo_move(self):
 
         if self.move.undo_move(self.board):
-
             # Update the board to remove the undone piece
             self.refresh_board()
 
             # Update whose turn it is
             player = self.move.players[self.move.current_player]
             self.status.config(text=f"Player {player}'s turn")
-
         else:
             self.status.config(text="There are no moves to undo.")
+
+    # Shows the player which column is recommended
+    def show_hint(self):
+
+        column = self.move.get_hint_column(self.board)
+
+        if column != None:
+            self.status.config(text=f"Suggested move: Column {column + 1}!")
+        else:
+            self.status.config(text="No available moves!")
