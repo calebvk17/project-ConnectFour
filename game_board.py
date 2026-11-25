@@ -457,10 +457,6 @@ class GameGUI(tk.Tk):
             width=12
         ).grid(row=9, column=3, padx=3, pady=5)
 
-        # Make all columns equal in size
-        for col in range(7):
-            self.grid_columnconfigure(col, weight=1)
-
         # Update the board so it displays the current game state
         self.refresh_board()
 
