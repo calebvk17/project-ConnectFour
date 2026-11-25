@@ -423,7 +423,7 @@ class GameGUI(tk.Tk):
             text="Load Game",
             command=self.load_game,
             width=12
-        ).grid(row=8, column=1, columnspan=2, padx=3, pady=15)
+        ).grid(row=8, column=1, padx=3, pady=15)
 
         # Button to start a new game
         tk.Button(
@@ -431,15 +431,7 @@ class GameGUI(tk.Tk):
             text="New Game",
             command=self.new_game,
             width=12
-        ).grid(row=8, column=3, padx=3, pady=15)
-
-        # Button to close the game window
-        tk.Button(
-            self,
-            text="Quit",
-            command=self.destroy,
-            width=12
-        ).grid(row=8, column=4, columnspan=2, padx=3, pady=15)
+        ).grid(row=8, column=2, padx=3, pady=15)
 
         # Button to undo the most recent move
         tk.Button(
@@ -447,7 +439,7 @@ class GameGUI(tk.Tk):
             text="Undo",
             command=self.undo_move,
             width=12
-        ).grid(row=8, column=6, padx=3, pady=15)
+        ).grid(row=8, column=3, padx=3, pady=15)
 
         # Button to give the player a suggested column
         tk.Button(
@@ -455,8 +447,16 @@ class GameGUI(tk.Tk):
             text="Hint",
             command=self.show_hint,
             width=12
-        ).grid(row=9, column=3, padx=3, pady=5)
+        ).grid(row=8, column=4, padx=3, pady=15)
 
+        # Button to close the game window
+        tk.Button(
+            self,
+            text="Quit",
+            command=self.destroy,
+            width=12
+        ).grid(row=8, column=5, columnspan=2, padx=3, pady=15)
+        
         # Update the board so it displays the current game state
         self.refresh_board()
 
