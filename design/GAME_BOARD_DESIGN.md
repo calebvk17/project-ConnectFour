@@ -1,0 +1,5 @@
+# Algorithm Strategy - Greedy Algorithm
+
+The AI hint system uses a greedy algorithm to recommend the best possible column for the current player. It first checks whether the player can win immediately and whether the opponent has an immediate winning move that needs to be blocked. It then evaluates the available moves using a scoring system that rewards connected pieces and centre-column positions while taking score away from moves that allow the opponent to win. The algorithm selects the column with the highest score.
+
+Using the Big-O classes, both the scoring function and the overall hint algorithm align most closely with O(n^2) time complexity, as they involve nested scanning over the board and the overall hint algorithm aligns most closely with the O(n^2) time complexity because they involve nested scanning over the board and temporary moves rather than exponential growth. Since the board has a fixed size of 6 x 7, the algorithm performs a small and predictable amount of work.
